@@ -72,7 +72,7 @@ class Login extends React.Component {
                           this.toggle("1");
                         }}
                       >
-                        JWT
+                        JWT 
                       </NavLink> */}
                     </NavItem>
                     <NavItem>
@@ -84,7 +84,7 @@ class Login extends React.Component {
                           this.toggle("2");
                         }}
                       >
-                        Firebase
+                        Firebase 125666
                       </NavLink> */}
                     </NavItem>
                     <NavItem>
