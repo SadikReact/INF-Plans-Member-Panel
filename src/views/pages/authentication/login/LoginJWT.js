@@ -61,7 +61,6 @@ class LoginJWT extends React.Component {
   };
 
   handleSubmitOTP = async (e) => {
-    debugger;
     e.preventDefault();
     let MemberId = localStorage.getItem("MemberId");
     let payload = {
@@ -70,10 +69,12 @@ class LoginJWT extends React.Component {
     await axiosConfig
       .post(`/user/verifyotp/${MemberId}`, payload)
       .then((res) => {
+        console.log(res.data.member);
+        localStorage.setItem("userData", res.data.member);
         localStorage.setItem("member-token", res.data.token);
         console.log(res.data.token);
         swal("Submittted Successfully");
-        window.location.replace("/dashboard");
+        window.location.replace("/#");
       })
       .catch((err) => {
         console.log(err);

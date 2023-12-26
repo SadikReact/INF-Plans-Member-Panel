@@ -61,7 +61,7 @@ class ChangePassword extends React.Component {
         cnfmPassword: this.state.cnfmPassword,
       };
 
-      let adminId = localStorage.getItem("userId");
+      let adminId = localStorage.getItem("MemberId");
       axiosConfig
         .post(`/admin/changeAdmingpassword/${adminId}`, password)
         .then((response) => {

@@ -44,19 +44,20 @@ class Profile extends React.Component {
     this.setState({ selectedFile: event.target.files[0] });
     this.setState({ selectedName: event.target.files[0].name });
   };
-
   componentDidMount() {
-    let adminId = localStorage.getItem("userId");
+    let MemberId = localStorage.getItem("MemberId");
     axiosConfig
-      .get(`/admin/viewoneadmin/${adminId}`)
+      .get(`/user/view-member-by-id/${MemberId}`)
       .then((response) => {
+        const Member = response.data.Member;
+        console.log(Member);
         this.setState({
-          data: response.data.data,
-          name: response.data.data.name,
-          email: response.data.data.email,
-          mobile: response.data.data.mobile,
-          password: response.data.data.password,
-          cnfmPassword: response.data.data.cnfmPassword,
+          data: Member,
+          name: Member.name,
+          email: Member.email,
+          mobile: Member.mobile,
+          password: Member.password,
+          cnfmPassword: Member.cnfmPassword,
         });
       })
       .catch((error) => {
@@ -75,7 +76,7 @@ class Profile extends React.Component {
     const data = new FormData();
     data.append("name", this.state.name);
     data.append("email", this.state.email);
-    data.append("mobile", this.state.mobile);
+    data.append("mobile", this.state.contactNo);
     data.append("password", this.state.password);
     data.append("cnfmPassword", this.state.cnfmPassword);
     if (this.state.selectedFile !== null) {
@@ -129,7 +130,7 @@ class Profile extends React.Component {
                     </li>
                     <li className="lst-2">
                       Mobile:
-                      <span className="lst-3">{this.state.data.mobile}</span>
+                      <span className="lst-3">{this.state.data.contactNo}</span>
                     </li>
                     <li className="lst-2">
                       Email:
@@ -171,14 +172,14 @@ class Profile extends React.Component {
                           value={this.state.LastName}
                           onChange={this.changeHandler}
                         />
-                        <Label>Age</Label>
+                        {/* <Label>Age</Label>
                         <Input
                           type="text"
                           name="Age"
                           placeholder="Age"
                           value={this.state.Age}
                           onChange={this.changeHandler}
-                        />
+                        /> */}
                         <Label>Email</Label>
                         <Input
                           type="email"
@@ -187,15 +188,15 @@ class Profile extends React.Component {
                           value={this.state.email}
                           onChange={this.changeHandler}
                         />
-                        <Label>CellPhone.</Label>
+                        {/* <Label>CellPhone.</Label>
                         <Input
                           type="number"
                           name="CellPhone"
                           placeholder="CellPhone no..."
                           value={this.state.CellPhone}
                           onChange={this.changeHandler}
-                        />
-                        <Label>Carrier</Label>
+                        /> */}
+                        {/* <Label>Carrier</Label>
                         <select
                           className="form-control"
                           name="Carrier"
@@ -217,7 +218,7 @@ class Profile extends React.Component {
                           <option selected="" value="other">
                             Other
                           </option>
-                        </select>
+                        </select> */}
                         {/* <Input
                           type="number"
                           name="Carrier"
@@ -225,7 +226,7 @@ class Profile extends React.Component {
                           value={this.state.Carrier}
                           onChange={this.changeHandler}
                         /> */}
-                        <Label>Income</Label>
+                        {/* <Label>Income</Label>
                         <Input
                           type="number"
                           name="Income"
@@ -287,8 +288,8 @@ class Profile extends React.Component {
                           <option selected="" value="Oth">
                             Other
                           </option>
-                        </select>
-                        <Label>Gender</Label>
+                        </select> */}
+                        {/* <Label>Gender</Label>
                         <select
                           className="form-control"
                           name="Gender"
@@ -324,7 +325,7 @@ class Profile extends React.Component {
                           type="file"
                           name="adminimg"
                           onChange={this.onChangeHandler}
-                        />
+                        /> */}
                         <CheckBoxesVuexy
                           color="primary"
                           icon={<Check className="vx-icon" size={16} />}
