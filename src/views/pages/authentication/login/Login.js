@@ -84,7 +84,7 @@ class Login extends React.Component {
                           this.toggle("2");
                         }}
                       >
-                        Firebase 125666
+                        Firebase Link
                       </NavLink> */}
                     </NavItem>
                     <NavItem>
